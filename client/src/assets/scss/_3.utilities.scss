@@ -1,0 +1,35 @@
+:root {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.9;
+    // background-color: var(--color-primary);
+    background-image: linear-gradient(to right bottom, var(--color-primary-m), var(--color-primary));
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+  }
+  
+  
+  
+  li {
+    list-style: none;
+  }
+  
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: var(--color-quinary);
+    font-weight: font-weight(font-weight-light);
+    letter-spacing: 0.2rem;
+    font-size: font-size(font-size-small);
+  }
+  
+  i {
+    color: var(--color-primary);
+    font-size: font-size(font-size-medium);
+  }
+  
