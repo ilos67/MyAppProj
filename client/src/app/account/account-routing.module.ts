@@ -11,7 +11,12 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
   {
-      path: '', component: AccountLayoutComponent,
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+ },
+  {
+      path: '', 
       children: [
           { path: 'login', component: LoginComponent },
           { path: 'register', component: RegisterComponent },

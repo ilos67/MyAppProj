@@ -1,0 +1,36 @@
+
+
+
+.control-form{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9dda0f;
+    padding: 0.5rem;
+    color: #151749;
+    outline: none;
+    background-color: transparent;
+}
+
+
+.forms-buttons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 0.5rem;
+}
+
+
+
+.form-input::placeholder {
+  color: #151749;
+}
+
+@media screen and (max-width: 572px) {
+  .forms-buttons {
+    max-width: 572px;
+    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+  }
+}

@@ -1,0 +1,26 @@
+.row-wrapped-first{
+    display:grid;
+    grid-template-columns: 8rem repeat(2,1fr);
+    column-gap: 0.5rem;
+}
+
+@media screen and (max-width: 490px) {
+    .row-wrapped,
+    .row-wrapped-first{
+      max-width: 490px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .forms-buttons {
+        max-width: 490px;
+        display: block;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 0.5rem;
+      }
+    
+  }
+  @media screen and (max-width: 572px) {
+    
+  }
