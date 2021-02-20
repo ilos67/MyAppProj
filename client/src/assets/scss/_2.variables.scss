@@ -5,6 +5,25 @@ Variables
 */
 
 :root {
+  $color-primary:#55c57a;
+$color-primary-light:#7ed56f;
+$color-primary-dark:#28b485;
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+$color-white:#fff;
+$color-black:#000;
   /* dark shades of primary color*/
   --clr-primary-1: hsl(205, 86%, 17%);
   --clr-primary-2: hsl(205, 77%, 27%);
@@ -48,6 +67,9 @@ Variables
   --clr-ui-dark-blue: #20225e;
   /* buttons color */
   --success-color-button:#43a047;
+
+  // COLOR
+
 }
 /*
 =============== 
@@ -220,4 +242,5 @@ padding-left: 0.5rem;
 color: var(--success-color-button);
 border: 0.1rem solid var(--success-color-button);
 }
+
   

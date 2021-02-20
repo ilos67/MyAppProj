@@ -5,5 +5,12 @@
         <h1>Hi {{account.firstName}}!</h1>
         <h1>Id :{{account.id}}!</h1>
         <p>You're logged in with Angular 10 & JWT!!</p>
+        <ul>
+            <li class="list-unstyled" *ngFor="let product of products">
+                {{product.name}}
+            </li>
+        </ul>
+    
     </div>
 </div>
+

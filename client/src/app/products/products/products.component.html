@@ -1,0 +1,14 @@
+<section class="cards">
+  <div class="title">
+    <h1>four column layout</h1>
+  </div>
+  <div class="cards-center">
+    <div class="hadi">
+      <div *ngFor="let item of products" >
+    <!-- Single card -->
+    <app-product-item [product]="item" class="kemo"></app-product-item>
+    <!-- End of single card -->
+  </div>
+  </div>
+  </div>
+</section>

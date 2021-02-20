@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { AccountService } from '../service/account.service';
 
@@ -29,3 +31,4 @@ export class AuthGuard implements CanActivate {
         return false;
     }
 }
+

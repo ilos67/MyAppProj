@@ -13,8 +13,8 @@ export class AccountService {
     private accountSubject: BehaviorSubject<Account>;
     public account: Observable<Account>;
 
-    // private currentUserSource = new ReplaySubject<Account>(1);
-    // currentUser$ = this.currentUserSource.asObservable();
+    private currentUserSource = new ReplaySubject<Account>(1);
+    currentUser$ = this.currentUserSource.asObservable();
 
     constructor(
         private router: Router,

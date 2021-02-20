@@ -1,0 +1,30 @@
+.card {
+
+  border: 1px solid gray;
+  margin-bottom: 3rem;
+}
+
+.card-info {
+  padding: .5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(95px, 1fr));
+
+}
+.card-footer {
+  background: grey;
+  padding: 0.5rem 1rem;
+display: flex;
+justify-content: space-around;
+}
+
+.card-footer span {
+  color: rgb(247, 23, 7);
+}
+
+img {
+  border: rgb(247, 23, 7) solid 0.2rem;
+  width: 100%;
+  display: block;
+}
+

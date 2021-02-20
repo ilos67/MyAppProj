@@ -1,0 +1,27 @@
+.title {
+    text-align: center;
+  }
+  .cards {
+    padding: 4rem 0;
+  }
+  .cards-center {
+    width: 95vw;
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+  .kemo{
+    background-color: hotpink;
+  }
+  .hadi{
+    background-color: indigo;
+    display: grid;
+    gap: 1rem 1rem;
+  
+    /* grid-template-columns: repeat(auto-fit, minmax(368px, 1fr)); */
+  
+    /* three column layout */
+    /* grid-template-columns: repeat(auto-fill, minmax(368px, 1fr)); */
+    grid-template-columns: repeat(auto-fill, minmax(268.5px, 1fr));
+  }
+
+
