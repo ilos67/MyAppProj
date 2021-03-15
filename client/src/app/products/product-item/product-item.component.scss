@@ -8,7 +8,7 @@
   padding: .5rem;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fit, minmax(95px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(min-content, 1fr));
 
 }
 .card-footer {

@@ -6,4 +6,8 @@ export interface IProduct {
     pictureUrl: string;
     productType: string;
     productBrand: string;
+    protein :number;
+    calori :number;
+    fat :number;
+    stocks: string[];
 }

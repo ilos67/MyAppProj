@@ -9,7 +9,7 @@ import { IProduct } from 'src/app/_models';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: IProduct;
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
    

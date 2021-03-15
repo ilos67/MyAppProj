@@ -4,16 +4,17 @@
   .cards {
     padding: 4rem 0;
   }
-  .cards-center {
+  .containerk {
     width: 95vw;
     max-width: 1170px;
     margin: 0 auto;
   }
-  .kemo{
-    background-color: hotpink;
+  .col-3{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
   }
-  .hadi{
-    background-color: indigo;
+  .hadi {
     display: grid;
     gap: 1rem 1rem;
   
@@ -21,7 +22,12 @@
   
     /* three column layout */
     /* grid-template-columns: repeat(auto-fill, minmax(368px, 1fr)); */
-    grid-template-columns: repeat(auto-fill, minmax(268.5px, 1fr));
+    grid-template-columns:repeat(auto-fill, minmax(268px, 1fr));
   }
+
+  // .hadi{
+  
+  // }
+  
 
 

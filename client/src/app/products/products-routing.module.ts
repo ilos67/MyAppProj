@@ -6,13 +6,13 @@ import { Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'products',
+    redirectTo: 'product',
     pathMatch: 'full'
  },
   {
       path: '', 
       children: [
-          { path: 'products', component: ProductsComponent }
+          { path: 'product', component: ProductsComponent }
       ]
   }
 ];
