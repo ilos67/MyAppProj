@@ -6,7 +6,7 @@ import { finalize, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Account } from '../_models/account';
 
-const baseUrl = `${environment.apiUrl}/accounts`;
+const baseUrl = `${environment.apiUrl}accounts`;
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {

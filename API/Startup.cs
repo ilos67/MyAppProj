@@ -125,6 +125,7 @@ namespace API
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
+            // app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();

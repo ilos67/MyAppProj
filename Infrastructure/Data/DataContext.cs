@@ -16,6 +16,13 @@ namespace Infrastructure.Data
          public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
+        public DbSet<IngredientCategory> IngredientCategory { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        //   public DbSet<IngredientInRecipe> IngredientsInRecipes { get; set; }
+        // public DbSet<Recipe> Recipes { get; set; }
+        // public DbSet<RecipePicture> RecipePictures { get; set; }
+        // // public DbSet<FavouriteRecipe> FavouriteRecipes { get; set; }
+        // public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

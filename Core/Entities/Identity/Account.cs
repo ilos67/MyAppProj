@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities.Identity
 {
@@ -10,6 +11,7 @@ namespace Core.Entities.Identity
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        
         public string Gender { get; set; }
         public string Introduction { get; set; }
         public string LookingFor { get; set; }
@@ -29,6 +31,7 @@ namespace Core.Entities.Identity
         public DateTime? Updated { get; set; }
         public List<RefreshToken> RefreshTokens { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        // public ICollection<Recipe> Recipes { get; set; }
 
         public bool OwnsToken(string token) 
         {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/internal/operators/finalize';
-import { first } from 'rxjs/internal/operators/first';
+import { first } from 'rxjs/internal/operators';
 import { AccountService } from 'src/app/service/account.service';
 import { AlertService } from 'src/app/service/alert.service';
 
