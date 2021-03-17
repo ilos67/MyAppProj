@@ -34,13 +34,29 @@ namespace API.Helpers
                     }
                 ));
 
+                CreateMap<ProductBrand, KeyValuePairDto>();
+                CreateMap<ProductType, KeyValuePairDto>();
+                CreateMap<Ingredient, KeyValuePairDto>();
+                CreateMap<IngredientCategory, KeyValuePairDto>();
+
                  CreateMap<Product, ProductToReturnDto>()
                 .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
                 .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductUrlResolver>());
 
+                CreateMap<Ingredient, SaveIngredientDto>();
+
                 CreateMap<Ingredient, IngredientToReturnDto>()
+                // .ReverseMap();
                 .ForMember(d => d.IngredientCategory, o => o.MapFrom(s => s.IngredientCategory.Name));
-        }
+
+
+                // CreateMap<IngredientToReturnDto, Ingredient>()
+                // .ForMember(d => d.IngredientCategory, o => o.MapFrom(s => s.IngredientCategory)); 
+
+                CreateMap<SaveIngredientDto, Ingredient>()
+                .ForMember(d => d.IngredientCategoryId, o => o.MapFrom(s => s.IngredientCategoryId));
+                
+         }
     }
 }
