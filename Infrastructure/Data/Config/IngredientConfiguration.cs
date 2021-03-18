@@ -14,8 +14,6 @@ namespace Infrastructure.Data.Config
            builder.Property(p => p.Protein).HasColumnType("decimal(18,2)");
            builder.Property(p => p.Calori).HasColumnType("decimal(18,2)");
            builder.Property(p => p.Fat).HasColumnType("decimal(18,2)");
-           builder.HasOne(b => b.IngredientCategory).WithMany()
-                    .HasForeignKey(p => p.IngredientCategoryId);
         }
     }
 }

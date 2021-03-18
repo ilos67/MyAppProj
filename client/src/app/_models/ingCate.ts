@@ -1,5 +1,4 @@
-export interface IReceipie {
+export interface ICateing {
     id: number;
     name: string;
-   
 }

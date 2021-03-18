@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210316161018_InitialCreate")]
+    [Migration("20210318095945_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<decimal?>("Fat")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("IngredientCategoryId")
+                    b.Property<int>("IngredientBrandId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -47,9 +47,28 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IngredientCategoryId");
+                    b.HasIndex("IngredientBrandId");
 
                     b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientBrand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IngredientCategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientCategoryId");
+
+                    b.ToTable("IngredientBrands");
                 });
 
             modelBuilder.Entity("Core.Entities.IngredientCategory", b =>
@@ -59,7 +78,6 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -135,8 +153,19 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Ingredient", b =>
                 {
-                    b.HasOne("Core.Entities.IngredientCategory", "IngredientCategory")
+                    b.HasOne("Core.Entities.IngredientBrand", "IngredientBrand")
                         .WithMany()
+                        .HasForeignKey("IngredientBrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IngredientBrand");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientBrand", b =>
+                {
+                    b.HasOne("Core.Entities.IngredientCategory", "IngredientCategory")
+                        .WithMany("IngredientBrands")
                         .HasForeignKey("IngredientCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -161,6 +190,11 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("ProductBrand");
 
                     b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientCategory", b =>
+                {
+                    b.Navigation("IngredientBrands");
                 });
 #pragma warning restore 612, 618
         }

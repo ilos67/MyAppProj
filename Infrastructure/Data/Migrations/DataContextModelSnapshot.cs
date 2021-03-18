@@ -32,7 +32,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<decimal?>("Fat")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("IngredientCategoryId")
+                    b.Property<int>("IngredientBrandId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -45,9 +45,28 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IngredientCategoryId");
+                    b.HasIndex("IngredientBrandId");
 
                     b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientBrand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IngredientCategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientCategoryId");
+
+                    b.ToTable("IngredientBrands");
                 });
 
             modelBuilder.Entity("Core.Entities.IngredientCategory", b =>
@@ -57,12 +76,30 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("IngredientCategories");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IngredientBrandId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientBrandId");
+
+                    b.ToTable("IngredientGroups");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
@@ -133,13 +170,35 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Ingredient", b =>
                 {
-                    b.HasOne("Core.Entities.IngredientCategory", "IngredientCategory")
+                    b.HasOne("Core.Entities.IngredientBrand", "IngredientBrand")
                         .WithMany()
+                        .HasForeignKey("IngredientBrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IngredientBrand");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientBrand", b =>
+                {
+                    b.HasOne("Core.Entities.IngredientCategory", "IngredientCategory")
+                        .WithMany("IngredientBrands")
                         .HasForeignKey("IngredientCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("IngredientCategory");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientGroup", b =>
+                {
+                    b.HasOne("Core.Entities.IngredientBrand", "IngredientBrand")
+                        .WithMany("IngredientGroups")
+                        .HasForeignKey("IngredientBrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IngredientBrand");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
@@ -159,6 +218,16 @@ namespace Infrastructure.Data.Migrations
                     b.Navigation("ProductBrand");
 
                     b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientBrand", b =>
+                {
+                    b.Navigation("IngredientGroups");
+                });
+
+            modelBuilder.Entity("Core.Entities.IngredientCategory", b =>
+                {
+                    b.Navigation("IngredientBrands");
                 });
 #pragma warning restore 612, 618
         }

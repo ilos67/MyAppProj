@@ -1,5 +1,4 @@
-export interface IReceipie {
+export interface IBranding {
     id: number;
     name: string;
-   
 }

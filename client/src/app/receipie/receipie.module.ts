@@ -5,6 +5,8 @@ import { ReceipieRoutingModule } from './receipie-routing.module';
 import { ReceipiesPanelComponent } from './receipies-panel/receipies-panel.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,11 +14,13 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
   declarations: [ReceipiesComponent, ReceipiesPanelComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    SharedModule,
     ReceipieRoutingModule,
     AccordionModule.forRoot()
   ],
   exports: [
-    ReceipiesComponent, ReceipiesPanelComponent,AccordionModule
+    ReceipiesComponent, ReceipiesPanelComponent,AccordionModule,  
   ]
 })
 export class ReceipieModule { }

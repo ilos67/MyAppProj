@@ -36,8 +36,10 @@ namespace API.Helpers
 
                 CreateMap<ProductBrand, KeyValuePairDto>();
                 CreateMap<ProductType, KeyValuePairDto>();
-                CreateMap<Ingredient, KeyValuePairDto>();
+                CreateMap<IngredientCategory, IngredientCategoryDto>();
                 CreateMap<IngredientCategory, KeyValuePairDto>();
+                CreateMap<IngredientBrand, KeyValuePairDto>();
+                CreateMap<Ingredient, KeyValuePairDto>();
 
                  CreateMap<Product, ProductToReturnDto>()
                 .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
@@ -48,14 +50,16 @@ namespace API.Helpers
 
                 CreateMap<Ingredient, IngredientToReturnDto>()
                 // .ReverseMap();
-                .ForMember(d => d.IngredientCategory, o => o.MapFrom(s => s.IngredientCategory.Name));
+               .ForMember(d => d.IngredientBrand, o => o.MapFrom(s => s.IngredientBrand.Name))
+                .ForMember(d => d.IngredientCategory, o => o.MapFrom(s => s.IngredientBrand.IngredientCategory.Name));
+                // .ForMember(d => d.IngredientGroup, o => o.MapFrom(s => s.IngredientBrand.IngredientGroups));
 
 
                 // CreateMap<IngredientToReturnDto, Ingredient>()
                 // .ForMember(d => d.IngredientCategory, o => o.MapFrom(s => s.IngredientCategory)); 
 
                 CreateMap<SaveIngredientDto, Ingredient>()
-                .ForMember(d => d.IngredientCategoryId, o => o.MapFrom(s => s.IngredientCategoryId));
+                .ForMember(d => d.IngredientBrandId, o => o.MapFrom(s => s.IngredientBrandId));
                 
          }
     }

@@ -12,8 +12,8 @@ namespace Core.Entities
 
         public string Description { get; set; }
 
-        public int IngredientCategoryId { get; set; }
-        public IngredientCategory IngredientCategory { get; set; }
+        public int IngredientBrandId { get; set; }
+        public IngredientBrand IngredientBrand { get; set; }
         public decimal? Protein { get; set; }
         public decimal? Calori { get; set; }
         public decimal? Fat { get; set; }

@@ -16,10 +16,12 @@ namespace API.Controllers
         private readonly IGenericRepository<Ingredient> _ingredientRepo;
         private readonly IGenericRepository<IngredientCategory> _ingredientCateRepo;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<IngredientBrand> _ingredientBrandRepo;
 
         private readonly IMapper _mapper;
-        public IngredientsController(IGenericRepository<Ingredient> ingredientRepo, IMapper mapper, IGenericRepository<IngredientCategory> ingredientCateRepo, IUnitOfWork unitOfWork)
+        public IngredientsController(IGenericRepository<Ingredient> ingredientRepo, IMapper mapper, IGenericRepository<IngredientCategory> ingredientCateRepo, IUnitOfWork unitOfWork, IGenericRepository<IngredientBrand> ingredientBrandRepo)
         {
+            _ingredientBrandRepo = ingredientBrandRepo;
             _unitOfWork = unitOfWork;
             _ingredientCateRepo = ingredientCateRepo;
             _ingredientRepo = ingredientRepo;
@@ -60,9 +62,17 @@ namespace API.Controllers
 
 
         [HttpGet("categories")]
-        public async Task<ActionResult<IReadOnlyList<IngredientCategory>>> GetIngredientCategory()
+        public async Task<ActionResult<IReadOnlyList<IngredientCategoryDto>>> GetIngredientCategory()
         {
-            return Ok(await _ingredientCateRepo.ListAllAsync());
+            var ingredient = await _ingredientCateRepo.ListAllAsync();
+
+           return _mapper.Map<IReadOnlyList<IngredientCategory>, List<IngredientCategoryDto>>(ingredient);
+        }
+
+        [HttpGet("brands")]
+        public async Task<ActionResult<IReadOnlyList<IngredientBrand>>> GetIngredientBrand()
+        {
+            return Ok(await _ingredientBrandRepo.ListAllAsync());
         }
 
 
@@ -84,17 +94,17 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [HttpPut ("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateIngredient(int id, [FromBody] SaveIngredientDto ingredientResource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            
+
 
             var ingredient = await _ingredientRepo.GetByIdAsync(id);
 
-            if(ingredient == null)
+            if (ingredient == null)
                 return NotFound();
             _mapper.Map<SaveIngredientDto, Ingredient>(ingredientResource, ingredient);
 
@@ -117,9 +127,9 @@ namespace API.Controllers
                 return NotFound();
 
             _ingredientRepo.Delete(ingredient);
-            if (await _unitOfWork.Complete() !=0) return Ok();
+            if (await _unitOfWork.Complete() != 0) return Ok();
 
-           return BadRequest("Problem deleting the ingredient");
+            return BadRequest("Problem deleting the ingredient");
         }
 
 

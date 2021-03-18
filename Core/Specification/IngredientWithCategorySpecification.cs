@@ -5,9 +5,12 @@ namespace Core.Specification
     public class IngredientWithCategorySpecification : BaseSpecification<Ingredient>
     {
         public IngredientWithCategorySpecification(IngredientSpecParams ingredientParams) : base(x => (string.IsNullOrEmpty(ingredientParams.Search) || x.Name.ToLower().Contains(ingredientParams.Search)) &&
-            (!ingredientParams.CategoryId.HasValue || x.IngredientCategoryId == ingredientParams.CategoryId))
+            (!ingredientParams.BrandId.HasValue || x.IngredientBrandId == ingredientParams.BrandId) && 
+            (!ingredientParams.CategoryId.HasValue || x.IngredientBrand.IngredientCategoryId == ingredientParams.CategoryId)
+            )
         {
-            AddInclude(x => x.IngredientCategory);
+            AddInclude(x => x.IngredientBrand);
+            AddInclude(x => x.IngredientBrand.IngredientCategory);
             AddOrderBy(x => x.Name);
             ApplyPaging(ingredientParams.PageSize * (ingredientParams.PageIndex - 1), ingredientParams.PageSize);
 
@@ -35,7 +38,8 @@ namespace Core.Specification
         }
         public IngredientWithCategorySpecification(int id) : base(x => x.Id == id)
         {
-            AddInclude(x => x.IngredientCategory);
+            AddInclude(x => x.IngredientBrand);
+            AddInclude(x => x.IngredientBrand.IngredientCategory);
         }
     }
 }
